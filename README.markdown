@@ -45,4 +45,4 @@ Development funded by LikeStream LLC (Don Jackson and Shirish Andhare), see [htt
 
 Designed and developed by Matt Revelle of [Lightpost Software](http://lightpostsoftware.com).
 
-Twitter Streaming API methods added by [a sleepy samurai](mailto://asleepysamurai@gmail.com).
+Twitter Streaming API methods added by [a sleepy samurai](mailto:asleepysamurai@gmail.com).
