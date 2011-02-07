@@ -1,5 +1,5 @@
 (defproject clojure-twitter-streaming "0.1.0"
-  :description "Twitter Client API for Clojure"
+  :description "Clojure client for Twitter API (Rest and Streaming, with oAuth authentication for both)"
   :dependencies [[org.clojure/clojure "1.2.0"]
                  [org.clojure/clojure-contrib "1.2.0"]
                  [clj-oauth "1.2.10"]
