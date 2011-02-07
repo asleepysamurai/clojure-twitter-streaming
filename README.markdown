@@ -11,32 +11,33 @@ Access the Twitter API from Clojure.
 
 # Example #
 
-    (require 'twitter
-             ['oauth.client :as 'oauth])
+	(require 'twitter.streaming
+         ['oauth.client :as 'oauth])
 
-    ;; Make a OAuth consumer
-    (def oauth-consumer (oauth/make-consumer <key>
-                                             <secret>       
-                                             "https://api.twitter.com/oauth/request_token"
-                                             "https://api.twitter.com/oauth/access_token"
-                                             "https://api.twitter.com/oauth/authorize"
-                                             :hmac-sha1))
-
-    (def oauth-access-token 
-         ;; Look up an access token you've stored away after the user
-         ;; authorized a request token and you traded it in for an
-         ;; access token.  See clj-oauth (http://github.com/mattrepl/clj-oauth) for an example.)
-    (def oauth-access-token-secret
-         ;; The secret included with the access token)
-
-    ;; Post to twitter
-    (twitter/with-oauth oauth-consumer 
-                        oauth-access-token
-                        oauth-access-token-secret
-                        (twitter/update-status "posting from #clojure with #oauth"))
-
-    ;; Find out who follows dons
-    (twitter/followers-of-name "donsbot")
+	;; Make a OAuth consumer
+	(def oauth-consumer (oauth/make-consumer <key>
+	                                         <secret>       
+	                                         "https://api.twitter.streaming.com/oauth/request_token"
+	                                         "https://api.twitter.streaming.com/oauth/access_token"
+	                                         "https://api.twitter.streaming.com/oauth/authorize"
+	                                         :hmac-sha1))
+	
+	(def oauth-access-token 
+	     ;; Look up an access token you've stored away after the user
+	     ;; authorized a request token and you traded it in for an
+	     ;; access token.  See clj-oauth (http://github.com/mattrepl/clj-oauth) for an example.)
+	(def oauth-access-token-secret
+	     ;; The secret included with the access token)
+	     
+	;; Print the Twitter stream to system outas it is recieved - this is the callback function
+	(defn write-out [data] (println data))
+	
+	;; Post to twitter.streaming
+	(twitter.streaming/with-oauth oauth-consumer 
+	                    oauth-access-token
+	                    oauth-access-token-secret
+	                    (twitter.streaming/statuses-filter write-out :track "basketball,football,baseball,footy,soccer"))
+	                    
 
 # Authors #
 
